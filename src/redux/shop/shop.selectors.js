@@ -29,3 +29,14 @@ export const selectCollections = collectionUrlParam => createSelector(
     [selectShopCollections],
     collections => collections ? collections[collectionUrlParam] : null
 )
+
+export const selectIsCollectionFetching = createSelector(
+    [selectShop],
+    shop => shop.isFetching
+)
+
+// converting a value to truely or false using !! => !!0 = false, !!null = false, !!{} = true
+export const selectIsCollectionLodead = createSelector(
+    [selectShop],
+    shop => !!shop.collections
+)
